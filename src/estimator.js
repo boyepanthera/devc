@@ -1,52 +1,57 @@
-// const data = {
-//   region: {
-//     name: "Africa",
-//     avgAge: 19.7,
-//     avgDailyIncomeInUSD: 5,
-//     avgDailyIncomePopulation: 0.71
-//   },
-//   periodType: "days",
-//   timeToElapse: 58,
-//   reportedCases: 674,
-//   population: 66622705,
-//   totalHospitalBeds: 1380614
-// }
+const data = {
+  region: {
+    name: "Africa",
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+  },
+  periodType: "days",
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+}
 
-
-const toDay = (data) => {
-  if (data.periodType === 'days') {
-    return data.timeToElapse;
-  } if (data.periodType === 'weeks') {
-    return data.timeToElapse * 7;
-  } if (data.periodType === 'months') {
-    return data.timeToElapse * 30;
+const toDay = (periodType, timeToElapse) => {
+  if (periodType === 'days') {
+    return timeToElapse;
+  }
+  if (periodType === 'weeks') {
+    return timeToElapse * 7;
+  }
+  if (periodType === 'months') {
+    return timeToElapse * 30;
   }
 };
 
 const covid19ImpactEstimator = (data) => {  
-  const {reportedCases, totalHospitalBeds} = data;
-  const {avgDailyIncomePopulation, avgDailyIncomeInUSD} = data.region;
+  const impact = {};
+  const severeImpact = {};
 
-  const impact =  () => {
-    currentlyInfected = reportedCases * 10;
-    infectionsByRequestedTime = Math.trunc(currentlyInfected * 2 ** (toDay(data) / 3));
-    severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
-    hospitalBedsByRequestedTime = Math.trunc(0.35 * totalHospitalBeds - severeCasesByRequestedTime);
-    casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15);
-    casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
-    dollarsInFlight = Math.trunc(infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD / (toDay(data)))
-  }
+  const {
+    reportedCases,
+    totalHospitalBeds,
+    periodType,
+    timeToElapse
+  } = data;
 
-  const severeImpact = () => {
-    currentlyInfected = Math.trunc(reportedCases *50);
-    infectionsByRequestedTime = Math.trunc(currentlyInfected * 2 ** (toDay(data) / 3));
-    severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
-    hospitalBedsByRequestedTime = Math.trunc(0.35 * totalHospitalBeds - severeCasesByRequestedTime);
-    casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15)
-    casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02)
-    dollarsInFlight = Math.trunc(infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD / (toDay(data)))
-  }
+  const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
 
+  impact.currentlyInfected = reportedCases * 10;
+  impact.infectionsByRequestedTime = Math.trunc(impact.currentlyInfected * 2 ** (toDay(periodType, timeToElapse) / 3));
+  impact.severeCasesByRequestedTime = Math.trunc(0.15 * impact.infectionsByRequestedTime);
+  impact.hospitalBedsByRequestedTime = Math.trunc(0.35 * totalHospitalBeds - impact.severeCasesByRequestedTime);
+  impact.casesForICUByRequestedTime = Math.trunc(impact.infectionsByRequestedTime * 0.15);
+  impact.casesForVentilatorsByRequestedTime = Math.trunc(impact.infectionsByRequestedTime * 0.02);
+  impact.dollarsInFlight = Math.trunc((infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / toDay(periodType, timeToElapse));
+  
+  severeImpact.currentlyInfected = Math.trunc(reportedCases * 50);
+  severeImpact.infectionsByRequestedTime = Math.trunc(severeImpact.currentlyInfected * 2 ** (toDay(periodType, timeToElapse) / 3));
+  severeImpact.severeCasesByRequestedTime = Math.trunc(0.15 * severeImpact.infectionsByRequestedTime);
+  severeImpact.hospitalBedsByRequestedTime = Math.trunc(0.35 * totalHospitalBeds - severeImpact.severeCasesByRequestedTime);
+  severeImpact.casesForICUByRequestedTime = Math.trunc(severeImpact.infectionsByRequestedTime * 0.15);
+  severeImpact.casesForVentilatorsByRequestedTime = Math.trunc(severeImpact.infectionsByRequestedTime * 0.02);
+  severeImpact.dollarsInFlight = Math.trunc((severeImpact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / toDay(periodType, timeToElapse));
   return {
     data,
     impact,
