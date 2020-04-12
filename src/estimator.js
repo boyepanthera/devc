@@ -12,7 +12,7 @@ const data = {
     totalHospitalBeds: 1380614
 }
 
-const toDay = (data) =>{
+const toDay = () =>{
     if(data.periodType === 'days'){
         return data.timeToElapse;
     } else if (data.periodType==='weeks') {
@@ -24,8 +24,7 @@ const toDay = (data) =>{
     }
 }
 
-
-const covid19ImpactEstimator = (data) => {  
+const covid19ImpactEstimator = () => {  
     let {reportedCases, totalHospitalBeds} = data;
     let {avgDailyIncomePopulation} = data.region;
 
