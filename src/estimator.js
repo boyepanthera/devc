@@ -34,22 +34,22 @@ const covid19ImpactEstimator = (data) => {
 
     let impact =  ()=> {
         currentlyInfected = reportedCases * 10;
-        infectionsByRequestedTime =  currentlyInfected * 2 ** (toDay(data)/3);
-        severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
-        hospitalBedsByRequestedTime = 0.35 * totalHospitalBeds - severeCasesByRequestedTime;
-        casesForICUByRequestedTime = infectionsByRequestedTime * 0.15
-        casesForVentilatorsByRequestedTime = infectionsByRequestedTime * 0.02
-        dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation *avgDailyIncomeInUSD / (toDay(data))
+        infectionsByRequestedTime =  Math.trunc(currentlyInfected * 2 ** (toDay(data)/3));
+        severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
+        hospitalBedsByRequestedTime = Math.trunc(0.35 * totalHospitalBeds - severeCasesByRequestedTime);
+        casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15)
+        casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02)
+        dollarsInFlight = Math.trunc(infectionsByRequestedTime * avgDailyIncomePopulation *avgDailyIncomeInUSD / (toDay(data)))
     }
 
     let severeImpact = () => {
-        currentlyInfected = reportedCases *50;
-        infectionsByRequestedTime = currentlyInfected * 2 ** (toDay(data) / 3);
-        severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
-        hospitalBedsByRequestedTime = 0.35 * totalHospitalBeds - severeCasesByRequestedTime;
-        casesForICUByRequestedTime = infectionsByRequestedTime * 0.15
-        casesForVentilatorsByRequestedTime = infectionsByRequestedTime * 0.02
-        dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation *avgDailyIncomeInUSD / (toDay(data))
+        currentlyInfected = Math.trunc(reportedCases *50);
+        infectionsByRequestedTime = Math.trunc(currentlyInfected * 2 ** (toDay(data) / 3));
+        severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
+        hospitalBedsByRequestedTime = Math.trunc(0.35 * totalHospitalBeds - severeCasesByRequestedTime);
+        casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15)
+        casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02)
+        dollarsInFlight = Math.trunc(infectionsByRequestedTime * avgDailyIncomePopulation *avgDailyIncomeInUSD / (toDay(data)))
     }
 
     return {
