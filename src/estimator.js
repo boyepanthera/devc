@@ -14,9 +14,9 @@
 
 const toDay = (periodType, timeToElapse) => {
   switch (periodType) {
-    case ('weeks'):
+    case 'weeks':
       return timeToElapse * 7;
-    case ('months'):
+    case 'months':
       return timeToElapse * 30;
     default:
       return timeToElapse;
