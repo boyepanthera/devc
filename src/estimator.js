@@ -13,11 +13,11 @@
 // }
 
 const toDay = (data) => {
-    if(data.periodType === 'days'){
+    if (data.periodType === 'days') {
         return data.timeToElapse;
-    } else if (data.periodType==='weeks') {
+    } else if (data.periodType === 'weeks') {
         return (data.timeToElapse * 7);
-    } else if (data.periodType ==='months') {
+    } else if (data.periodType === 'months') {
         return(data.periodType*30)
     } else {
         return timeToElapse
