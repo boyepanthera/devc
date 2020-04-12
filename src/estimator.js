@@ -1,4 +1,4 @@
-let data = {
+const data = {
     region: {
         name: "Africa",
         avgAge: 19.7,
@@ -25,10 +25,9 @@ const toDay = (data) =>{
 }
 
 
-const covid19ImpactEstimator = (data) => {
-    
+const covid19ImpactEstimator = (data) => {  
     let {reportedCases, totalHospitalBeds} = data;
-    let {avgDailyIncomePopulation} = data.region
+    let {avgDailyIncomePopulation} = data.region;
 
     let currentlyInfected, infectionsByRequestedTime;
 
@@ -37,8 +36,8 @@ const covid19ImpactEstimator = (data) => {
         infectionsByRequestedTime =  Math.trunc(currentlyInfected * 2 ** (toDay(data)/3));
         severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
         hospitalBedsByRequestedTime = Math.trunc(0.35 * totalHospitalBeds - severeCasesByRequestedTime);
-        casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15)
-        casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02)
+        casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15);
+        casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
         dollarsInFlight = Math.trunc(infectionsByRequestedTime * avgDailyIncomePopulation *avgDailyIncomeInUSD / (toDay(data)))
     }
 
