@@ -13,16 +13,14 @@
 // }
 
 const toDay = (periodType, timeToElapse) => {
-  if (periodType === 'days') {
-    return timeToElapse;
+  switch (periodType) {
+    case ('weeks'):
+      return timeToElapse * 7;
+    case ('months'):
+      return timeToElapse * 30;
+    default:
+      return timeToElapse;
   }
-  if (periodType === 'weeks') {
-    return timeToElapse * 7;
-  }
-  if (periodType === 'months') {
-    return timeToElapse * 30;
-  }
-  return timeToElapse;
 };
 
 const covid19ImpactEstimator = (data) => {
