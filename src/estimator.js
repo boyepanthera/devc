@@ -12,7 +12,7 @@
 //     totalHospitalBeds: 1380614
 // }
 
-const toDay = (data) =>{
+const toDay = (data) => {
     if(data.periodType === 'days'){
         return data.timeToElapse;
     } else if (data.periodType==='weeks') {
