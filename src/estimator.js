@@ -63,7 +63,7 @@ const covid19ImpactEstimator = (data) => {
     * avgDailyIncomePopulation * avgDailyIncomeInUSD) / toDay(periodType, timeToElapse));
 
   return {
-    data,
+    // data,
     impact,
     severeImpact
   };
