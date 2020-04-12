@@ -37,8 +37,8 @@ const covid19ImpactEstimator = (data) => {
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
 
   impact.currentlyInfected = reportedCases * 10;
-  impact.infectionsByRequestedTime = Math.trunc(impact.currentlyInfected * 2
-    ** (toDay(periodType, timeToElapse) / 3));
+  impact.infectionsByRequestedTime = impact.currentlyInfected * 2
+    ** Math.trunc(toDay(periodType, timeToElapse) / 3);
   impact.severeCasesByRequestedTime = Math.trunc(0.15 * impact.infectionsByRequestedTime);
   impact.hospitalBedsByRequestedTime = Math.trunc(0.35 * totalHospitalBeds
     - impact.severeCasesByRequestedTime);
@@ -48,8 +48,8 @@ const covid19ImpactEstimator = (data) => {
     * avgDailyIncomePopulation * avgDailyIncomeInUSD) / toDay(periodType, timeToElapse));
 
   severeImpact.currentlyInfected = reportedCases * 50;
-  severeImpact.infectionsByRequestedTime = Math.trunc(severeImpact.currentlyInfected * 2
-    ** (toDay(periodType, timeToElapse) / 3));
+  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 2
+    ** Math.truc(toDay(periodType, timeToElapse) / 3);
   severeImpact.severeCasesByRequestedTime = Math.trunc(0.15
     * severeImpact.infectionsByRequestedTime);
   severeImpact.hospitalBedsByRequestedTime = Math.trunc(0.35 * totalHospitalBeds
