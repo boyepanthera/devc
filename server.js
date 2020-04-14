@@ -12,11 +12,12 @@ import path from 'path';
 app.use(express.static(__dirname + '/public'));
 
 const writeFile = fs.createWriteStream(
-    path.join(process.cwd(), '/public/logs/server.log'), {
-        flags :'a',
-        encoding : 'utf8'
-    }
-)
+  path.join(__dirname, '../public', '/logs/server.log'),
+  {
+    flags: 'a',
+    encoding: 'utf8'
+  }
+);
 
 const format = ':method\t:url\t:status\t:response-time';
 
