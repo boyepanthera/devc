@@ -33,7 +33,7 @@ app.use(morgan(format, {
     stream :{
         write(message) {
             const finalIndex = message.length - 1 ;
-            const lastTabIndex = message.lastIndexOf('\t')
+            const lastTabIndex = message.lastIndexOf('\t\t')
             const str = message.substring(lastTabIndex +  1 , finalIndex);
             let time =Math.ceil(parseFloat(str));
             if(time <10 ) {
