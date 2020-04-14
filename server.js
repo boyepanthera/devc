@@ -96,7 +96,7 @@ app.post('/api/v1/on-covid-19/xml', async(req, res) => {
 app.get('/api/v1/on-covid-19/logs', async(req, res) => {
     try{
         res.set('Content-Type', 'text/plain');
-        res.sendFile(__dirname + 'server.log');
+        res.sendFile(__dirname + '/server.log');
     } catch (err) {
         res.status(400).json({message :err.message})
     }
