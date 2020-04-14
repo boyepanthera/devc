@@ -99,7 +99,7 @@ app.post('/api/v1/on-covid-19/xml', async(req, res) => {
         // console.log(data)
         let result = await covid19ImpactEstimator(data);
         // console.log(result)
-        res.set('Content-Type', 'text/xml')
+        res.set('Content-Type', 'application/xml')
         res.send(xml(result))
     } catch(err) {
         res.status(400).json({message : err.message})
