@@ -72,7 +72,6 @@ app.post('/api/v1/on-covid-19/json', async(req, res) => {
         let result = await covid19ImpactEstimator(data);
         // console.log(result)
         res.status(200).json({
-            message: 'Results fetched Successfully',
             result
     })
     } catch(err) {
