@@ -20,7 +20,7 @@ app.use(express.static(__dirname + '/public'));
 // })
 
 const writeFile = fs.createWriteStream(
-  path.join(__dirname, 'tmp/server.log'),
+  path.join(__dirname, '/server.log'),
   {
     flags: 'a',
     encoding: 'utf8'
@@ -96,7 +96,7 @@ app.post('/api/v1/on-covid-19/xml', async(req, res) => {
 app.get('/api/v1/on-covid-19/logs', async(req, res) => {
     try{
         res.set('Content-Type', 'text/plain');
-        res.sendFile(__dirname + '/tmp/server.log');
+        res.sendFile(__dirname + 'server.log');
     } catch (err) {
         res.status(400).json({message :err.message})
     }
