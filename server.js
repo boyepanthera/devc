@@ -15,10 +15,10 @@ const LogSchema = new mongoose.Schema({
 })
 
 const writeFile = fs.createWriteStream(
-    path.join(__dirname, '/logs/server.log', {
+    path.join(__dirname, '/logs/server.log'), {
         flags :'a',
         encoding : 'utf8'
-    })
+    }
 )
 
 const format = ':method\t:url\t:status\t:response-time';
@@ -89,16 +89,8 @@ app.post('/api/v1/on-covid-19/xml', async(req, res) => {
 
 app.get('/api/v1/on-covid-19/logs', async(req, res) => {
     try{
-        // const logs = await Logger.find({});
-        // console.log(logs)
-        // let content = ''
-        // logs.map(log=> {
-        //     content += log.log+ '\n'
-        // })
-        // console.log(content)
-        // fs.writeFile('/src/logs.txt', content)
         res.set('Content-Type', 'text/plain');
-        res.status(200).send(
+        res.sendFile(
             path.join(__dirname + '/logs/server.log')
         )
     } catch (err) {
