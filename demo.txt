@@ -1,0 +1,7 @@
+::1 - - [12/Apr/2020:20:41:23 +0000] "GET /api/v1/on-covid-19/logs HTTP/1.1" 200 41 "-" "PostmanRuntime/7.24.1"
+::1 - - [12/Apr/2020:20:41:30 +0000] "GET /api/v1/on-covid-19/logs HTTP/1.1" 200 41 "-" "PostmanRuntime/7.24.1"
+::1 - - [12/Apr/2020:20:49:22 +0000] "GET /api/v1/on-covid-19/logs HTTP/1.1" 200 27 "-" "PostmanRuntime/7.24.1"
+::1 - - [12/Apr/2020:20:50:01 +0000] "GET /api/v1/on-covid-19/logs HTTP/1.1" 200 28 "-" "PostmanRuntime/7.24.1"
+::1 - - [12/Apr/2020:20:50:43 +0000] "GET /api/v1/on-covid-19/logs HTTP/1.1" 200 813 "-" "PostmanRuntime/7.24.1"
+::1 - - [12/Apr/2020:22:28:00 +0000] "GET /api/v1/on-covid-19/logs HTTP/1.1" 400 46 "-" "PostmanRuntime/7.24.1"
+::1 - - [12/Apr/2020:22:28:50 +0000] "GET /api/v1/on-covid-19/logs HTTP/1.1" 200 673 "-" "PostmanRuntime/7.24.1"
