@@ -12,7 +12,7 @@ import path from 'path';
 app.use(express.static(__dirname + '/public'));
 
 const writeFile = fs.createWriteStream(
-    path.join(__dirname, '/public/logs/server.log'), {
+    path.join(process.cwd(), '/public/logs/server.log'), {
         flags :'a',
         encoding : 'utf8'
     }
