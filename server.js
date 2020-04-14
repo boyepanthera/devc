@@ -11,7 +11,13 @@ import path from 'path';
 
 app.use(express.static(__dirname + '/public'));
 
-fs.writeFile(__dirname + '/temp/server.log')
+fs.writeFile(__dirname + '/temp/server.log', err => {
+    if(err){
+        console.log(err)
+    } else {
+        console.log('file created')
+    }
+})
 
 const writeFile = fs.createWriteStream(
   path.join(__dirname, 'temp/server.log'),
